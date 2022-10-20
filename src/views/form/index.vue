@@ -22,6 +22,7 @@
       <el-form-item label="Instant delivery">
         <el-switch v-model="form.delivery" />
       </el-form-item>
+	   <div v-if="form.delivery==false">
       <el-form-item label="Activity type">
         <el-checkbox-group v-model="form.type">
           <el-checkbox label="Online activities" name="type" />
@@ -39,6 +40,7 @@
       <el-form-item label="Activity form">
         <el-input v-model="form.desc" type="textarea" />
       </el-form-item>
+	  </div>
       <el-form-item>
         <el-button type="primary" @click="onSubmit">Create</el-button>
         <el-button @click="onCancel">Cancel</el-button>
@@ -73,6 +75,7 @@ export default {
         type: 'warning'
       })
     }
+	
   }
 }
 </script>
