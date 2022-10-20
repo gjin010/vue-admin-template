@@ -20,9 +20,10 @@
         </el-col>
       </el-form-item>
       <el-form-item label="Instant delivery">
-        <el-switch v-model="form.delivery" />
+        <el-switch v-model="form.delivery" @change="changedisabled" />
       </el-form-item>
-	   <div v-if="form.delivery==false">
+	   <!-- <div v-bind:class="{delivery: isTrue ?'true':'false' }"> -->
+	   <div v-show="isShow">
       <el-form-item label="Activity type">
         <el-checkbox-group v-model="form.type">
           <el-checkbox label="Online activities" name="type" />
@@ -62,7 +63,8 @@ export default {
         type: [],
         resource: '',
         desc: ''
-      }
+      },
+	  isShow:true
     }
   },
   methods: {
@@ -74,8 +76,10 @@ export default {
         message: 'cancel!',
         type: 'warning'
       })
-    }
-	
+    },
+	changedisabled(){
+		this.isShow=!this.isShow
+	}
   }
 }
 </script>
